@@ -19,6 +19,7 @@ public class FileAccess {
         String reminders;
         
         try{
+            // we want to put this inside the catch loop to avoid breaking if the file is not found
             Scanner inputStream = new Scanner(file);
             inputStream.useDelimiter(",|\\n|\\r");
             
