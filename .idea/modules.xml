@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Project-CSCE314.iml" filepath="$PROJECT_DIR$/Project-CSCE314.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javafit/javafit.iml" filepath="$PROJECT_DIR$/javafit/javafit.iml" />
     </modules>
   </component>
 </project>

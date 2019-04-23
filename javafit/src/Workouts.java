@@ -3,19 +3,39 @@ import java.util.ArrayList; // We choose ArrayList over Vector because...?
 
 public class Workouts {
 
-  public enum Muscle {ABS, BACK, BICEPS, CHEST, FOREARM, GLUTES, LOWERLEG, SHOULDER, TRICEPS, UPPERLEG, NONE} // Why didn't I have to declare this static?
-  public enum Equipment {BARBELL, BODYWEIGHT, DUMBBELL, CABLE, HAMMERSTRENGTH}
   private final ArrayList<Workout> workoutList = new ArrayList<Workout>();
+
+  public Config.Equipment getWorkoutEquipment(int index) {
+    return this.workoutList.get(index).getE();
+  }
+
+  public int findWorkoutByName(String wrkName) {
+    for (int i=0; i<workoutList.size(); i++) {
+      if (workoutList.get(i).getName() == wrkName)
+        return i;
+    }
+
+    return -1;
+  }
+
+  public ArrayList<String> getEquipment() {
+    ArrayList<String> eqList = new ArrayList<String>();
+    for (int i=0; i<workoutList.size(); i++) {
+      eqList.add(workoutList.get(i).getName());
+    }
+
+    return eqList;
+  }
 
   private class Workout {
     private String name;
-    private Equipment equipment;
-    private Muscle primaryMuscle;
-    private Muscle secondaryMuscle;
+    private Config.Equipment equipment;
+    private Config.Muscle primaryMuscle;
+    private Config.Muscle secondaryMuscle;
     private String desc;
     private String reminders;
   
-    Workout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders) {
+    Workout(String name, Config.Equipment equipment, Config.Muscle primaryMuscle, Config.Muscle secondaryMuscle, String desc, String reminders) {
       this.name = name;
       this.equipment = equipment;
       this.primaryMuscle = primaryMuscle;
@@ -24,17 +44,17 @@ public class Workouts {
       this.reminders = reminders;
     }
     
-    protected boolean hasPrimaryMuscle(Muscle m) {
+    protected boolean hasPrimaryMuscle(Config.Muscle m) {
       return primaryMuscle == m;
     }
-    protected boolean hasSecondaryMuscle(Muscle m) {
+    protected boolean hasSecondaryMuscle(Config.Muscle m) {
       return secondaryMuscle == m;
     }
-    protected boolean hasEquipment(Equipment e) {
+    protected boolean hasEquipment(Config.Equipment e) {
       return equipment == e;
     }
-    protected boolean hasEquipment(ArrayList<Equipment> equipmentList) {
-      for (Equipment e : equipmentList) {// This is a ForEach, and uses an iterator in the background to loop through the collection.
+    protected boolean hasEquipment(ArrayList<Config.Equipment> equipmentList) {
+      for (Config.Equipment e : equipmentList) {// This is a ForEach, and uses an iterator in the background to loop through the collection.
         if(hasEquipment(e)) return true;
       }
       return false;
@@ -46,6 +66,7 @@ public class Workouts {
     public String getEquipment() { // How do we get the name of an enumeration value?
       return equipment.name();
     }
+    public Config.Equipment getE() {return this.equipment;}
     public String getPrimaryMuscle() { // How do we get the name of an enumeration value?
       return primaryMuscle.name();
     }
@@ -60,7 +81,7 @@ public class Workouts {
     }
   }
   
-  public final void addWorkout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders)
+  public final void addWorkout(String name, Config.Equipment equipment, Config.Muscle primaryMuscle, Config.Muscle secondaryMuscle, String desc, String reminders)
   {
     Workout newWorkout = new Workout(name, equipment, primaryMuscle, secondaryMuscle, desc, reminders);
     workoutList.add(newWorkout);
@@ -71,7 +92,7 @@ public class Workouts {
     workoutList.add(workout);
   }
   
-  public final Workouts getWorkoutsByMuscle(Muscle m, boolean includeSecondary)
+  public final Workouts getWorkoutsByMuscle(Config.Muscle m, boolean includeSecondary)
   {
     Workouts retval = new Workouts();
     for(Workout w : workoutList) {
@@ -85,7 +106,7 @@ public class Workouts {
     return retval;
   }
   
-  public final Workouts getWorkoutsByEquipment(Equipment e)
+  public final Workouts getWorkoutsByEquipment(Config.Equipment e)
   {
     Workouts retval = new Workouts();
     for(Workout w : workoutList) {
@@ -96,7 +117,7 @@ public class Workouts {
     return retval;
   }
   
-  public final Workouts getWorkoutsByEquipment(ArrayList<Equipment> e)
+  public final Workouts getWorkoutsByEquipment(ArrayList<Config.Equipment> e)
   {
     Workouts retval = new Workouts();
     for(Workout w : workoutList) {
