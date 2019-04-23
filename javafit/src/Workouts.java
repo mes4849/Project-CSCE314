@@ -5,8 +5,12 @@ public class Workouts {
 
   private final ArrayList<Workout> workoutList = new ArrayList<Workout>();
 
-  public Config.Equipment getWorkoutEquipment(int index) {
-    return this.workoutList.get(index).getE();
+  public Workout getWorkout(int index) {
+    return workoutList.get(index);
+  }
+
+  public String getWorkoutEquipment(int index) {
+    return this.workoutList.get(index).getEquipment();
   }
 
   public int findWorkoutByName(String wrkName) {
@@ -66,7 +70,6 @@ public class Workouts {
     public String getEquipment() { // How do we get the name of an enumeration value?
       return equipment.name();
     }
-    public Config.Equipment getE() {return this.equipment;}
     public String getPrimaryMuscle() { // How do we get the name of an enumeration value?
       return primaryMuscle.name();
     }
