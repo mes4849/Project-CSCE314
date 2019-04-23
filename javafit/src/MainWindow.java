@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
@@ -13,13 +14,36 @@ public class MainWindow {
   private final Workouts workouts;
   private final EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups;
 
+  private final Canvas canvas;
+  private Swing buttonSwing;
+
+
   MainWindow(Workouts workouts, EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups) {
-    // Code goes here.
+    this.workouts = workouts;
+    this.muscleGroups = muscleGroups;
+    canvas = new Canvas();
+
+    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  }
+
+  public void start() {
+    launchHomeScreen();
+  }
+
+  private void createButtons(JFrame frame) {
+    buttonSwing = new Swing(frame);
+    buttonSwing.setButtonText(0 , "TEST");
   }
   
   private void launchHomeScreen() {
-    // Code goes here.
- 
+    canvas.setSize(600,400);
+
+    createButtons(mainFrame);
+    //Display the window.
+    mainFrame.add(canvas);
+    mainFrame.pack();
+    mainFrame.setVisible(true);
+
   }
   
   // This is the method your actionlistener should call. It should create and display a WorkoutsPanel.

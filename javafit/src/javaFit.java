@@ -12,12 +12,14 @@ public class javaFit {
 
 	System.out.println("Just a test");
 		
-	  // Load data into app
-    //Workouts workouts= FileAccess.loadWorkouts();
-    //EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups = FileAccess.loadFormats();
+	// Load data into app
+    Workouts workouts = FileAccess.loadWorkouts();
+
+    EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups = FileAccess.loadFormats();
 	  
-	  // Create Screen Handler
-	  //MainWindow mainScreen = new MainWindow(workouts, muscleGroups);
+  	// Create Screen Handler
+  	MainWindow mainScreen = new MainWindow(workouts, muscleGroups);
+  	mainScreen.start();
 	  
 	  
 

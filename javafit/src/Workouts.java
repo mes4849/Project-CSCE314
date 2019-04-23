@@ -5,30 +5,25 @@ public class Workouts {
 
   private final ArrayList<Workout> workoutList = new ArrayList<Workout>();
 
-  public Workout getWorkout(int index) {
+  public final int size() {
+    return workoutList.size();
+  }
+
+  public final Workout getWorkout(int index) {
     return workoutList.get(index);
   }
 
-  public String getWorkoutEquipment(int index) {
+  public final String getWorkoutEquipment(int index) {
     return this.workoutList.get(index).getEquipment();
   }
 
-  public int findWorkoutByName(String wrkName) {
+  public final int findWorkoutByName(String wrkName) {
     for (int i=0; i<workoutList.size(); i++) {
       if (workoutList.get(i).getName() == wrkName)
         return i;
     }
 
     return -1;
-  }
-
-  public ArrayList<String> getEquipment() {
-    ArrayList<String> eqList = new ArrayList<String>();
-    for (int i=0; i<workoutList.size(); i++) {
-      eqList.add(workoutList.get(i).getName());
-    }
-
-    return eqList;
   }
 
   public final void addWorkout(String name, Config.Equipment equipment, Config.Muscle primaryMuscle, Config.Muscle secondaryMuscle, String desc, String reminders)
@@ -55,6 +50,16 @@ public class Workouts {
     }
     return retval;
   }
+
+  public final Workouts getWorkoutsByMuscle(ArrayList<Config.Muscle> m, boolean includeSecondary) {
+    Workouts retval = new Workouts();
+    for (Workout w : workoutList) {
+      if (w.hasPrimaryMuscle(m) || (w.hasSecondaryMuscle(m) && includeSecondary))
+        retval.addWorkout(w);
+    }
+
+    return retval;
+  }
   
   public final Workouts getWorkoutsByEquipment(Config.Equipment e)
   {
@@ -77,7 +82,15 @@ public class Workouts {
     }
     return retval;
   }
-  
+
+  public final ArrayList<String> getEquipment() {
+    ArrayList<String> retval = new ArrayList<String>();
+    for(Workout w : workoutList) {
+      retval.add(w.getEquipment());
+    }
+    return retval;
+  }
+
   public final ArrayList<String> getNames()
   {
     ArrayList<String> retval = new ArrayList<String>();

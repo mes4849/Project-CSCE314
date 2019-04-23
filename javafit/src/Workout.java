@@ -51,4 +51,22 @@ public class Workout {
   public String getReminders() {
     return reminders;
   }
+
+  protected boolean hasPrimaryMuscle(ArrayList<Config.Muscle> muscleList) {
+    for (Config.Muscle m : muscleList) {
+      if (this.hasPrimaryMuscle(m))
+        return true;
+    }
+
+    return false;
+  }
+
+  protected boolean hasSecondaryMuscle(ArrayList<Config.Muscle> muscleList) {
+    for (Config.Muscle m : muscleList) {
+      if (this.hasSecondaryMuscle(m))
+        return true;
+    }
+
+    return false;
+  }
 }
