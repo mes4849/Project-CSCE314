@@ -14,7 +14,6 @@ public class MainWindow {
   private final Workouts workouts;
   private final EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups;
 
-  private final Canvas canvas;
   private Swing buttonSwing;
 
 
@@ -30,20 +29,17 @@ public class MainWindow {
     launchHomeScreen();
   }
 
-  private void createButtons(JFrame frame) {
+  private void startProgram(JFrame) {
     buttonSwing = new Swing(frame);
-    buttonSwing.setButtonText(0 , "TEST");
+    buttonSwing.setButtonText(0 , "UPPERBODY");
+    
   }
   
   private void launchHomeScreen() {
-    canvas.setSize(600,400);
-
-    createButtons(mainFrame);
+    startProgram(mainFrame);
     //Display the window.
-    mainFrame.add(canvas);
     mainFrame.pack();
     mainFrame.setVisible(true);
-
   }
   
   // This is the method your actionlistener should call. It should create and display a WorkoutsPanel.

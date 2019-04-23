@@ -7,6 +7,8 @@ public class Swing {
     private final JFrame thisFrame;
     private final ArrayList<JButton> buttons = new ArrayList<JButton>();
 
+    private final WorkoutsPanel;
+
     public Swing(JFrame parentFrame) {
         thisFrame = parentFrame;
         for (int i = 0 ; i < 3 ; i++) {

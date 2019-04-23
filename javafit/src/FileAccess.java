@@ -36,7 +36,6 @@ public class FileAccess {
   }
 
   public static EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> loadFormats() {
-	
     EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> retval  = new EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>>(Config.MuscleGroup.class);
 	  
  	  // Code goes here.
