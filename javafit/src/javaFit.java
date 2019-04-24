@@ -15,11 +15,17 @@ public class javaFit {
 	// Load data into app
     Workouts workouts = FileAccess.loadWorkouts();
 
+
     EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups = FileAccess.loadFormats();
 	  
   	// Create Screen Handler
   	MainWindow mainScreen = new MainWindow(workouts, muscleGroups);
-  	mainScreen.start();
+
+  	// Create Swing object??
+	Swing buttonSwing = new Swing(mainScreen.getFrame());
+
+
+	mainScreen.startProgram(buttonSwing);
 	  
 	  
 
