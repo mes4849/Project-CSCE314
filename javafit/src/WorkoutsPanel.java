@@ -36,8 +36,7 @@ public class WorkoutsPanel extends JTabbedPane {
     JTextArea taDescription;
     JTextArea taNotes;
         
-    WorkoutPanel(Config.Muscle muscle, ArrayList<Config.Muscle> muscles, Workouts workouts)
-    {
+    WorkoutPanel(Config.Muscle muscle, ArrayList<Config.Muscle> muscles, Workouts workouts) {
       this.workouts = workouts.getWorkoutsByMuscle(muscle, false);
       this.muscle = muscle;
       workoutIndex = 0;
@@ -45,8 +44,7 @@ public class WorkoutsPanel extends JTabbedPane {
       updatePanel();
     }
 
-    private void updatePanel()
-    {
+    private void updatePanel() {
       this.removeAll();
 
       // Layout window
