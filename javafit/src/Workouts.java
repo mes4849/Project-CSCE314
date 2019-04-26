@@ -37,8 +37,7 @@ public class Workouts {
     workoutList.add(workout);
   }
   
-  public final Workouts getWorkoutsByMuscle(Config.Muscle m, boolean includeSecondary)
-  {
+  public final Workouts getWorkoutsByMuscle(Config.Muscle m, boolean includeSecondary) {
     Workouts retval = new Workouts();
     for(Workout w : workoutList) {
       if(w.hasPrimaryMuscle(m)) {
@@ -84,9 +83,15 @@ public class Workouts {
   }
 
   public final ArrayList<String> getEquipment() {
+    boolean exists = false;
     ArrayList<String> retval = new ArrayList<String>();
     for(Workout w : workoutList) {
-      retval.add(w.getEquipment());
+      for (String s : retval) {
+        if (s.equalsIgnoreCase(w.getEquipment()))
+          exists = true;
+      }
+      if (! exists)
+        retval.add(w.getEquipment());
     }
     return retval;
   }
