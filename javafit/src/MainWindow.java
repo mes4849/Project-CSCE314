@@ -16,8 +16,10 @@ public class MainWindow implements ActionListener {
   private JSpinner spnDuration;
   private final Workouts workouts;
   private final EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups;
+  //
   private Canvas canvas = new Canvas();
   private final ArrayList<JButton> buttons = new ArrayList<JButton>();
+  private final ArrayList<ImageIcon> icons;
 
 
   MainWindow(Workouts workouts, EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups) {
@@ -25,6 +27,7 @@ public class MainWindow implements ActionListener {
     this.muscleGroups = muscleGroups;
     mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     canvas.setSize(600 , 400);
+    icons = FileAccess.loadIcons();
     this.launchHomeScreen();
   }
   
@@ -40,7 +43,7 @@ public class MainWindow implements ActionListener {
   }
   
   private void addButton(int i , String S) {
-        buttons.add(new JButton(S));
+        buttons.add(new JButton(S , icons.get(i) , center));
         thisFrame.add(buttons.get(i));
         buttons.get(i).setBounds(25 ,10 + (i*120),550,110);     // hard coded for three buttons
   }
