@@ -5,7 +5,7 @@ import java.util.EnumMap;
 
 import javax.swing.*;
 import java.awt.event.*;
-
+import javax.swing.border.EmptyBorder;
 
 // Bonus points: Create an icon (or find a public domain icon. Keep in mind federal Copyright law and TAMU's plagiarism policy and add it to the home screen window.
 public class MainWindow implements ActionListener {
@@ -16,9 +16,8 @@ public class MainWindow implements ActionListener {
   private JSpinner spnDuration;
   private final Workouts workouts;
   private final EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups;
-
-  private Swing buttonSwing;
   private Canvas canvas = new Canvas();
+  private final ArrayList<JButton> buttons = new ArrayList<JButton>();
 
 
   MainWindow(Workouts workouts, EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups) {
@@ -26,36 +25,39 @@ public class MainWindow implements ActionListener {
     this.muscleGroups = muscleGroups;
     mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     canvas.setSize(600 , 400);
+    this.launchHomeScreen();
   }
-
-  public JFrame getFrame() {
-    return mainFrame;
-  }
-
-  public void startProgram(Swing swing) {
-    int i = 0;
-    buttonSwing = swing;
-
-    for (Config.MuscleGroup mg : muscleGroups.keySet()) {
-      buttonSwing.addButton(i , mg.toString());
-      i++;
-    }
-
-    registerHandlers();
-    launchHomeScreen();
-  }
-
-  private void registerHandlers() {
-    for (JButton jb : buttonSwing.getButtons()) {
-      jb.addActionListener(this);
-    }
-  }
-
+  
   private void launchHomeScreen() {
+      
     mainFrame.add(canvas);
+    this.createButtons();
+    this.registerHandlers();
+    
     //Display the window.
     mainFrame.pack();
     mainFrame.setVisible(true);
+  }
+  
+  private void addButton(int i , String S) {
+        buttons.add(new JButton(S));
+        thisFrame.add(buttons.get(i));
+        buttons.get(i).setBounds(25 ,10 + (i*120),550,110);     // hard coded for three buttons
+  }
+
+  private void createButtons() {
+    int i = 0;
+
+    for (Config.MuscleGroup mg : muscleGroups.keySet()) {
+      addButton(i , mg.toString());
+      i++;
+    }
+  }
+
+  private void registerHandlers() {
+    for (JButton jb : buttons){
+      jb.addActionListener(this);
+    }
   }
 
   // the main window will dictate what happens at button press...
@@ -64,7 +66,7 @@ public class MainWindow implements ActionListener {
     callHandler(temp.getText());
   }
 
-  public void callHandler(String S) {
+  private void callHandler(String S) {
     showWorkouts(muscleGroups.get(Config.MuscleGroup.valueOf(S)));
   }
   
