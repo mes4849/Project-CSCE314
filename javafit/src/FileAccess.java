@@ -4,13 +4,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Scanner;
+import javax.swing.ImageIcon;
 
 public class FileAccess {
   
   public static Workouts loadWorkouts() {
     Workouts retval = new Workouts();
     
-    try { 
+    try {
+        System.out.println(Config.WORKOUTFILE);
       Scanner scanner = new Scanner(new File(Config.WORKOUTFILE));
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
@@ -62,19 +64,19 @@ public class FileAccess {
     return retval;
   }
   
-  public static EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> loadIcons() {
-    ArrayList<ImageIcon> icons;
+  public static ArrayList<ImageIcon> loadIcons() {
+    ArrayList<ImageIcon> icons = new ArrayList<ImageIcon>();
 
     try {
-      icons.add(new ImageIcon(Config.ICONFOLDER+"upper.png" , description));
-      icons.add(new ImageIcon(Config.ICONFOLDER+"lower.png" , description));
-      icons.add(new ImageIcon(Config.ICONFOLDER+"whole.png" , description));
+      icons.add(new ImageIcon(Config.ICONFOLDER+"upper.png" , "UpperBody"));
+      icons.add(new ImageIcon(Config.ICONFOLDER+"lower.png" , "LowerBody"));
+      icons.add(new ImageIcon(Config.ICONFOLDER+"whole.png" , "WholeBody"));
     }
-    catch (FileNotFoundException e)
+    catch (Exception e)
     {
-      System.out.println("Unable to find workouts file. Is it in the same directory as the executable?\nError:"+e.toString());
+      System.out.println("Unable to find icon files. Are they in the same folder as the source files?\nError:"+e.toString());
     }
     
-    return retval;
+    return icons;
   }
 }

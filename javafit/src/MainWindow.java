@@ -43,8 +43,8 @@ public class MainWindow implements ActionListener {
   }
   
   private void addButton(int i , String S) {
-        buttons.add(new JButton(S , icons.get(i) , center));
-        thisFrame.add(buttons.get(i));
+        buttons.add(new JButton(S , icons.get(i)));
+        mainFrame.add(buttons.get(i));
         buttons.get(i).setBounds(25 ,10 + (i*120),550,110);     // hard coded for three buttons
   }
 

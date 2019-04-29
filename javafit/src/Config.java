@@ -5,9 +5,9 @@ import java.nio.file.Paths;
 
 public class Config {
   
-  public final static String APPLICATIONNAME = "JavaFit: Muscles for Computer Scientists!";
-  public final static String WORKOUTFILE = "data/workouts.csv";
-  public final static String WORKOUTFORMATFILE = "data/workoutformats.csv";
+  public final static String APPLICATIONNAME = Paths.get("").toAbsolutePath().getParent().toString()+ "/data/" + "JavaFit: Muscles for Computer Scientists!";
+  public final static String WORKOUTFILE = Paths.get("").toAbsolutePath().getParent().toString()+ "/data/" + "workouts.csv";
+  public final static String WORKOUTFORMATFILE = Paths.get("").toAbsolutePath().getParent().toString()+ "/data/" + "workoutformats.csv";
   public final static String ICONFOLDER = Paths.get("").toAbsolutePath().toString();
 
   public enum MuscleGroup {UPPERBODY, LOWERBODY, WHOLEBODY}
