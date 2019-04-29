@@ -68,9 +68,9 @@ public class FileAccess {
     ArrayList<ImageIcon> icons = new ArrayList<ImageIcon>();
 
     try {
-      icons.add(new ImageIcon(Config.ICONFOLDER+"upper.png" , "UpperBody"));
-      icons.add(new ImageIcon(Config.ICONFOLDER+"lower.png" , "LowerBody"));
-      icons.add(new ImageIcon(Config.ICONFOLDER+"whole.png" , "WholeBody"));
+      icons.add(new ImageIcon(Config.UPPERICON , "UpperBody"));
+      icons.add(new ImageIcon(Config.LOWERICON , "LowerBody"));
+      icons.add(new ImageIcon(Config.WHOLEICON, "WholeBody"));
     }
     catch (Exception e)
     {

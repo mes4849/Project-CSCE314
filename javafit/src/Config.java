@@ -8,7 +8,10 @@ public class Config {
   public final static String APPLICATIONNAME = "JavaFit: Muscles for Computer Scientists!";
   public final static String WORKOUTFILE = "workouts.csv";
   public final static String WORKOUTFORMATFILE = "workoutformats.csv";
-  public final static String ICONFOLDER = Paths.get("").toAbsolutePath().toString();
+  //public final static String ICONFOLDER = Paths.get("").toAbsolutePath().toString();
+  public final static String UPPERICON = "upper.png";
+  public final static String LOWERICON = "upper.png";
+  public final static String WHOLEICON = "upper.png";
 
   public enum MuscleGroup {UPPERBODY, LOWERBODY, WHOLEBODY}
   public enum Muscle {ABS, BACK, BICEPS, CHEST, FOREARM, GLUTES, LOWERLEG, SHOULDER, TRICEPS, UPPERLEG, NONE} // Why didn't I have to declare this static?
