@@ -61,4 +61,20 @@ public class FileAccess {
     
     return retval;
   }
+  
+  public static EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> loadIcons() {
+    ArrayList<ImageIcon> icons;
+
+    try {
+      icons.add(new ImageIcon(Config.ICONFOLDER+"upper.png" , description));
+      icons.add(new ImageIcon(Config.ICONFOLDER+"lower.png" , description));
+      icons.add(new ImageIcon(Config.ICONFOLDER+"whole.png" , description));
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("Unable to find workouts file. Is it in the same directory as the executable?\nError:"+e.toString());
+    }
+    
+    return retval;
+  }
 }
