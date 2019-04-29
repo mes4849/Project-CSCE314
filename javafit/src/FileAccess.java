@@ -74,7 +74,7 @@ public class FileAccess {
     }
     catch (Exception e)
     {
-      System.out.println("Unable to find icon files. Are they in the same folder as the source files?\nError:"+e.toString());
+      System.out.println("Unable to find icon files. Are they in the same folder as the data files?\nError:"+e.toString());
     }
     
     return icons;

@@ -18,24 +18,23 @@ public class MainWindow implements ActionListener {
   private final EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups;
   //
   private Canvas canvas = new Canvas();
-  private final ArrayList<JButton> buttons = new ArrayList<JButton>();
-  private final ArrayList<ImageIcon> icons;
+  private ArrayList<JButton> buttons = new ArrayList<JButton>();
+  private ArrayList<ImageIcon> icons;
 
 
   MainWindow(Workouts workouts, EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> muscleGroups) {
     this.workouts = workouts;
     this.muscleGroups = muscleGroups;
     mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    canvas.setSize(600 , 400);
     icons = FileAccess.loadIcons();
+    canvas.setSize(600 , 400);
     this.launchHomeScreen();
   }
   
   private void launchHomeScreen() {
-      
-    mainFrame.add(canvas);
     this.createButtons();
     this.registerHandlers();
+    mainFrame.add(canvas);
     
     //Display the window.
     mainFrame.pack();
@@ -47,6 +46,7 @@ public class MainWindow implements ActionListener {
             buttons.add(new JButton(S));
         else
             buttons.add(new JButton(S , icons.get(i)));
+        //buttons.add(new JButton(S));
         mainFrame.add(buttons.get(i));
         buttons.get(i).setBounds(25 ,10 + (i*120),550,110);     // hard coded for three buttons
   }
