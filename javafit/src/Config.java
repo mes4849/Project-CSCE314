@@ -5,13 +5,13 @@ import java.nio.file.Paths;
 
 public class Config {
   
-  public final static String APPLICATIONNAME = "data/JavaFit: Muscles for Computer Scientists!";
-  public final static String WORKOUTFILE = "data/workouts.csv";
-  public final static String WORKOUTFORMATFILE = "data/workoutformats.csv";
+  public final static String APPLICATIONNAME = "JavaFit: Muscles for Computer Scientists!";
+  public final static String WORKOUTFILE = "workouts.csv";
+  public final static String WORKOUTFORMATFILE = "workoutformats.csv";
   //public final static String ICONFOLDER = Paths.get("").toAbsolutePath().toString();
-  public final static String UPPERICON = "data/upper.png";
-  public final static String LOWERICON = "data/lower.png";
-  public final static String WHOLEICON = "data/whole.png";
+  public final static String UPPERICON = "upper.png";
+  public final static String LOWERICON = "lower.png";
+  public final static String WHOLEICON = "whole.png";
 
   public enum MuscleGroup {UPPERBODY, LOWERBODY, WHOLEBODY}
   public enum Muscle {ABS, BACK, BICEPS, CHEST, FOREARM, GLUTES, LOWERLEG, SHOULDER, TRICEPS, UPPERLEG, NONE} // Why didn't I have to declare this static?
